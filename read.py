@@ -26,10 +26,14 @@ print('There are', i, 'message(s) whose length is lower 100')
 print(new)
 
 # Filter out messages with word 'good'
-new2 = [] # 'new2' list to store messages with good or Good
-for message in data:
-	if 'good' in message or 'Good' in message:
-		new2.append(message.strip())
+# new2 = [] # 'new2' list to store messages with good or Good
+# for message in data:
+# 	if 'good' in message or 'Good' in message:
+# 		new2.append(message)
+# print('There are', len(new2), 'message(s) with good or Good word inside')
+
+# List comprehension (line 36 = line 29 ~ 32)
+new2 = [message for message in data if 'good' in message or 'Good' in message]
 print('There are', len(new2), 'message(s) with good or Good word inside')
 
 # Show ?th message as user's requirement
