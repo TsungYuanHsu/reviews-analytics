@@ -15,8 +15,18 @@ for d in data:
 	sum_length += len(d)
 print('Average message length is:', sum_length / len(data))
 
+# Calculate how many messages are there wiht length lower than 100
+new = []
+i = 0 # message count of message length < 100
+for message in data:
+	if len(message) < 100:
+		new.append(message.strip())
+		i += 1
+print('There are', i, 'message(s) whose length is lower 100')
+print(new)
+
 # Show ?th message as user's requirement
-while True:
-	num = int(input('Which ?th message do you want to show?(? is integer from 1 to 1000000) '))
-	print(data[num - 1])
-	print('------------------------------------')
+# while True:
+# 	num = int(input('Which ?th message do you want to show?(? is integer from 1 to 1000000) '))
+# 	print(data[num - 1])
+# 	print('------------------------------------')
