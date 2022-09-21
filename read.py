@@ -16,7 +16,7 @@ for d in data:
 print('Average message length is:', sum_length / len(data))
 
 # Calculate how many messages are there wiht length lower than 100
-new = []
+new = [] # 'new' list to store messages with length lower than 100
 i = 0 # message count of message length < 100
 for message in data:
 	if len(message) < 100:
@@ -24,6 +24,13 @@ for message in data:
 		i += 1
 print('There are', i, 'message(s) whose length is lower 100')
 print(new)
+
+# Filter out messages with word 'good'
+new2 = [] # 'new2' list to store messages with good or Good
+for message in data:
+	if 'good' in message or 'Good' in message:
+		new2.append(message.strip())
+print('There are', len(new2), 'message(s) with good or Good word inside')
 
 # Show ?th message as user's requirement
 # while True:
