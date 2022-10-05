@@ -6,9 +6,41 @@ with open('reviews.txt', 'r') as f:
 		count += 1
 		if count % 1000 == 0:
 			print('We are running to', count, 'th message') # print every 1000 loop
-
 print('In total, we have', len(data), 'message')
+print(data[0])
 
+# Turn message list into word list and calculate which word occurs the most often
+import re # re module for multiple delimiters split
+def word_count(data):
+	word_count_dict = {}
+	word_count_list = []
+	for msg in data:
+		word_list = msg.split()
+		for word in word_list:
+			if word not in word_count_dict:
+				word_count_dict[word] = 1
+			else:
+				word_count_dict[word] += 1
+	for key in word_count_dict:
+		if word_count_dict[key] > 100:
+			print(key, word_count_dict[key])
+	for key in word_count_dict:
+		word_count_list.append([word_count_dict[key], key])
+	word_count_list.sort(reverse=True)
+	print('The word' + ' "' + word_count_list[0][1] + '" ' + 'show out the most and show out', word_count_list[0][0], 'time(s)')
+
+	while True:
+		word = input('What word do you wanna know how many times it shows: ')
+		if word == 'q':
+			break
+		elif word in word_count_dict:
+			print(word, 'shows out', word_count_dict[word], 'time(s)')
+		else:
+			print('This word does not exist in the messages')
+
+word_count(data)
+
+count(data)
 # Calculate average message length
 sum_length = 0 # initial length
 for d in data:
