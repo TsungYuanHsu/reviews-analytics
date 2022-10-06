@@ -1,16 +1,20 @@
+import time
+import re # re module for multiple delimiters split
+import progressbar
+
 data = []
 count = 0 # loop count
+bar = progressbar.ProgressBar(max_value=1000000)
 with open('reviews.txt', 'r') as f:
 	for line in f:
 		data.append(line)
 		count += 1
-		if count % 1000 == 0:
-			print('We are running to', count, 'th message') # print every 1000 loop
+		bar.update(count)
 print('In total, we have', len(data), 'message')
 print(data[0])
 
 # Turn message list into word list and calculate which word occurs the most often
-import re # re module for multiple delimiters split
+start_time = time.time()
 def word_count(data):
 	word_count_dict = {}
 	word_count_list = []
@@ -28,7 +32,11 @@ def word_count(data):
 		word_count_list.append([word_count_dict[key], key])
 	word_count_list.sort(reverse=True)
 	print('The word' + ' "' + word_count_list[0][1] + '" ' + 'show out the most and show out', word_count_list[0][0], 'time(s)')
-
+	end_time = time.time()
+	time_gap = end_time - start_time
+	print(start_time)
+	print(end_time)
+	print('takes', time_gap, 's to finish dict')
 	while True:
 		word = input('What word do you wanna know how many times it shows: ')
 		if word == 'q':
@@ -40,7 +48,7 @@ def word_count(data):
 
 word_count(data)
 
-count(data)
+
 # Calculate average message length
 sum_length = 0 # initial length
 for d in data:
